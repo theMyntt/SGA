@@ -5,6 +5,7 @@
     "Gabriel Araújo Lima <gabriel.araujo2902@outlook.com>"
   ],
   "private": false,
+  "license": "ISC",
   "version": "0.0.1",
   "repository": {
     "type": "git",
