@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CENA - HOME</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/templates.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('index')}}">Home <span class="sr-only">(Página atual)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('cadaster')}}">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sugestões</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pesquisa</a>
+                    </li> 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Informações
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Dados Pessoais</a>
+                            <a class="dropdown-item" href="#">Currículo</a>
+                            <a class="dropdown-item" href="#">Suas Aulas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn nav-link exit" id="exit_button" href="#" onclick="exit()">Sair</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <main>
+            <div class="infosBox">
+                <p class="your_id">Identificação do Professor</p>
+                <input type="file" id="inputFile" style="display: none;" accept="image/*">
+                <div class="image" id="photoContainer"></div>
+                <button class="btn" onclick="selecionarFoto()">ALTERAR FOTO</button>
+                <div class="infos">
+                    <p>RM: 231128</p>
+                    <p>Nome: Eric Luis da Silva Mauricio</p>
+                    <p>RA SED: 1101464720-0/SP</p>
+
+                    <label for="skill">Habilitação:</label><br>
+                    <select name="skills" id="skillsBox" style="width: 160px;">
+                        <option value="prof_pw_mtec">PROFESSOR PROGRAMAÇÃO WEB I - M-TEC</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="infos_area">
+                <div class="partner">
+                    <div class="header">
+                        <h4>Projeto Office 365</h4>
+                    </div>
+                    <p>EMAIL INSTITUCIONAL: <a href="#">eric.mauricio@etec.sp.gov.br</a></p>
+                    <button class="btn btn-danger">SOLICITAR A TROCA DE SENHA</button>
+                    <div class="header">
+                        <p>Para acessar seu e-mail institucional e outros beneficicios: <a href="#">Clique aqui</a></p>
+                    </div>
+                </div>
+
+                <div class="tables">
+
+                    <table class="table_pend">
+                        <tr>
+                            <th colspan="1">
+                                <h2>Pendencias</h2>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Clique para atender</th>
+                        </tr>
+
+                        <tr>
+                            <td><a href="#">Questionário socioeconômico</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Atribuição de Aulas</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Comprovantes</a></td>
+                        </tr>
+
+                    </table>
+
+                    <div class="table_msg">
+                        <h2 class="table_label blog">Mensagens para o aluno</h2>
+                        <table class="table">
+                            <tr>
+                                <th>Veja aqui suas mensagens</th>
+                            </tr>
+
+                            <tr>
+                                <td><a href="#">Nenhuma mensagem</a></td>
+                            </tr>
+                        </table>
+
+                        <h2 class="table_label blog">BLOG</h2>
+
+                        <table class="table_blog">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Assunto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>21/07/2020</td>
+                                    <td>DESAFIO ROBOTCHALLENGE</td>
+                                </tr>
+                                <tr>
+                                    <td>14/07/2020</td>
+                                    <td>AULAS GRATUITAS DE COREANO ONLINE</td>
+                                </tr>
+                                <tr>
+                                    <td>09/06/2020</td>
+                                    <td>SUSPENSÃO DE AULAS 11 E 12/08</td>
+                                </tr>
+                                <tr>
+                                    <td>27/04/2020</td>
+                                    <td>MASTER CLASS - 27 A 30/04</td>
+                                </tr>
+                                <tr>
+                                    <td>01/04/2020</td>
+                                    <td>COMUNICADO IMPORTANTE</td>
+                                </tr>
+                                <tr>
+                                    <td>05/07/2019</td>
+                                    <td>FEIRA DE PROFISSÕES</td>
+                                </tr>
+                                <tr>
+                                    <td>18/04/2019</td>
+                                    <td>3º SIPAT</td>
+                                </tr>
+                                <tr>
+                                    <td>24/08/2018</td>
+                                    <td>SÁBADO LETIVO - 01/09 - SETEMBRO AMARELO</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer style="margin-left: 210px;width: 860px">&copy; Sistema CENA - Desde 2024</footer>
+    </div>
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+</html>

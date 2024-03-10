@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/templates.css') }}">
+
+    <style>
+        body {
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 750px;
+            padding: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form action="post">
+            <div class="login">
+                <div class="login_form">
+                    <div class="divs_input">
+                        <label for="enterAs" style="margin-right: 20px;">Entrar como:
+                            <select name="enter" id="enterAs">
+                                <option value="al">Aluno</option>
+                                <option value="resp">Responsável</option>
+                                <option value="etec">ETEC</option>
+                                <option value="mon">Monitoramento</option>
+                                <option value="sup">Supervisão</option>
+                                <option value="prof">Professor</option>
+                            </select>
+                        </label>
+                        <label for="cod">Cod. ETEC: <input type="text" name="codEtec" id="cod"><button
+                                class="info_button" title="Clique para obter o código da ETEC">?</button> </label>
+                    </div>
+
+                    <div class="divs_input">
+                        <label for="rm">RM:<input type="text" name="rmAl" id="rm" placeholder="Insira o RM"></label>
+                        <label for="pass" class="pass">Senha:<input type="password" name="pass" id="pass"
+                                placeholder="Insira a senha"></label>
+
+                        <button class="btn btn-dark enter justify-content-center align-items-center d-flex">
+                            <a href="{{ url_for('index') }}"
+                                style="color: #fff; text-decoration: none; justify-content: center">Entrar</a></button>
+                    </div>
+                </div>
+                <footer style="width: 100%;">&copy; Sistema CENA - Desde 2024</footer>
+        </form>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</html>
