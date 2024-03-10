@@ -1,0 +1,13 @@
+{
+  "name": "sga-online",
+  "authors": [
+    "Eric Luis <ericluismauricio@gmail.com>",
+    "Gabriel Araújo Lima <gabriel.araujo2902@outlook.com>"
+  ],
+  "private": false,
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themyntt/SGA"
+  }
+}
