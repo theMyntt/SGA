@@ -1,0 +1,7 @@
+from utils.connectDb import connectUsersTable
+from utils.encrypt import hashText
+
+def createAccount(EMAIL_USER, PASSWORD_USER, CELLPHONE_USER, NAME_USER, SCHOOL_ID_SCHOOL):
+    HASH_PASSWORD = hashText(PASSWORD_USER)
+
+    return connectUsersTable(f"INSERT INTO USER_INFORMATION (EMAIL_USER, PASSWORD_USER, CELLPHONE_USER, NAME_USER, SCHOOL_ID_SCHOOL) VALUES ('{EMAIL_USER}', '{HASH_PASSWORD}', '{CELLPHONE_USER}', '{NAME_USER}', {SCHOOL_ID_SCHOOL})")
