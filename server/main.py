@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from routes.loginAccount import loginAccount
+from routes.createAccount import createAccount
 
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +20,28 @@ def userLogin():
       return loginAccount(postData[0], postData[1])
     except Exception as e:
       return jsonify({"message": "Error1: " + str(e)}), 400
+  
+  return jsonify({"message": "Não autorizado"})
+    
+@app.route("/api/users/signup", methods=["POST"])
+def userCreate():
+  if request.method == "POST":
+    try:
+      post = request.get_json()
+
+      postData = [
+        post.get("EMAIL_USER"),
+        post.get("PASSWORD_USER"),
+        post.get("CELLPHONE_USER"),
+        post.get("NAME_USER"),
+        post.get("SCHOOL_ID_SCHOOL")
+      ]
+
+      return createAccount(postData[0], postData[1], postData[2], postData[3], postData[4])
+    except Exception as e:
+      return jsonify({"message": "Error2: " + str(e)}), 400
+    
+  return jsonify({"message": "Não autorizado"})
     
 if __name__ == "__main__":
   app.run(debug=True)
