@@ -9,10 +9,11 @@ def connectUsersTable(queryText: str):
 
     try:
         connect = mysql.connector.connect(
-            host=os.getenv("MYSQL_URI"),
-            user=os.getenv("MYSQL_USR"),
-            password=os.getenv(""),
-            database=os.getenv("MYSQL_DBA_NAME")
+            host=str(os.getenv("MYSQL_URI").split(":")[0]),  # Obtém o host
+            port=int(os.getenv("MYSQL_URI").split(":")[1]),  # Obtém a porta
+            user=str(os.getenv("MYSQL_USR")),
+            password="",
+            database=str(os.getenv("MYSQL_DBA_NAME"))
         )
 
         cursor = connect.cursor()
@@ -22,9 +23,9 @@ def connectUsersTable(queryText: str):
             results = cursor.fetchall()
             return results
         except Exception as e:
-            return jsonify({"message2": "Error: " + str(e)}), 400
+            return jsonify({"message": "Error: " + str(e)}), 400
         finally:
             cursor.close()
             connect.close()
     except Exception as e:
-        return jsonify({"message3": "Error: " + str(e)}), 400
+        return jsonify({"message": "Error: " + str(e)}), 400
