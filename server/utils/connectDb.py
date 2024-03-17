@@ -4,7 +4,7 @@ from flask import jsonify
 import mysql.connector
 import os
 
-def connectUsersTable(queryText: str):
+def connectUsersTable(queryText: str, returnSomething: bool):
     load_dotenv()
 
     try:
@@ -20,8 +20,13 @@ def connectUsersTable(queryText: str):
 
         try:
             cursor.execute(queryText)
-            results = cursor.fetchall()
-            return results
+
+            connect.commit()
+            
+            if returnSomething:
+                return cursor.fetchall()
+            
+            return jsonify({"message": "OK"})
         except Exception as e:
             return jsonify({"message": "Error: " + str(e)}), 400
         finally:
