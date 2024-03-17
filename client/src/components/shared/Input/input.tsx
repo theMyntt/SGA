@@ -2,7 +2,7 @@ import "./input.scss";
 
 interface Props {
   placeholder?: string;
-  type: "string" | "email" | "password";
+  type: "string" | "email" | "password" | "number";
   id?: string;
   maxLength?: number;
   minLength?: number;
