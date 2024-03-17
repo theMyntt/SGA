@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from routes.loginAccount import loginAccount
-from routes.createAccount import createAccount
+
+from .routes.getAccount import loginAccount
+from .routes.setAccount import createAccount
+from .routes.getMention import getMention
 
 app = Flask(__name__)
 CORS(app)
@@ -42,6 +44,13 @@ def userCreate():
       return jsonify({"message": "Error2: " + str(e)}), 400
     
   return jsonify({"message": "Não autorizado"})
+
+@app.route("/api/users/mention", methods=["GET"])
+def userMention():
+  try:
+    return getMention(request.args.get("USER_ID_USER"))
+  except Exception as e:
+    return jsonify({"message": "Error3: " + str(e)}), 400
     
 if __name__ == "__main__":
   app.run(debug=True)
