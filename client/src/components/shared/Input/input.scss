@@ -1,0 +1,11 @@
+.custom-input-div > input {
+  height: 40px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--dark-blue);
+  padding: 0 20px;
+}
+
+.custom-input-div > input:focus {
+  outline: none;
+}
