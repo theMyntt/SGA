@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from .routes.getAccount import loginAccount
-from .routes.setAccount import createAccount
-from .routes.getMention import getMention
+from routes.getAccount import loginAccount
+from routes.setAccount import createAccount
+from routes.getMention import getMention
 
 app = Flask(__name__)
 CORS(app)
