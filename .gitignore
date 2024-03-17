@@ -1,6 +1,7 @@
 client/node_modules
 client/package-lock.json
 client/dist
+client/.env
 
 server/.env
 server/utils/__pycache__
