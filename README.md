@@ -16,6 +16,7 @@ Sistema de Gerenciamento de Alunos desenvolvido com Python, ReactTS, ViteJS, Axi
 - Instale a dependência flask ```pip3 install flask```
 - Instale a dependência my-sql ```pip3 install mysql-connector-python```
 - Instale a dependência python-dotenv ```pip3 install python-dotenv```
+- Instale a dependência hashlib ```pip3 install hashlib```
 - Inicie o servidor com o comando ```python3 main.py```
 
 ### Front-End
