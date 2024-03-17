@@ -16,10 +16,11 @@ def userLogin():
 
       postData = [
         post.get("EMAIL_USER"),
-        post.get("PASSWORD_USER")
+        post.get("PASSWORD_USER"),
+        post.get("SCHOOL_ID_SCHOOL")
       ]
 
-      return loginAccount(postData[0], postData[1])
+      return loginAccount(postData[0], postData[1], postData[2])
     except Exception as e:
       return jsonify({"message": "Error1: " + str(e)}), 400
   
