@@ -1,5 +1,6 @@
 :root {
-  --dark-blue: #0D47A1;
+  --dark-blue: rgb(79, 70, 229);
+  --light-gray: #e5e7eb;
 }
 
 * {
@@ -19,4 +20,23 @@
 }
 .flex.between {
   justify-content: space-between;
+}
+
+.card {
+  border: 1px solid var(--light-gray);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.to-center {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .flex {
+    display: block !important;
+  }
+  .card {
+    width: 100% !important;
+  }
 }
