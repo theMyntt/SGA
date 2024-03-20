@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+app = Flask(__name__)
+CORS(app)
+
 from routes.getAccount import loginAccount
 from routes.setAccount import createAccount
 from routes.getMention import getMention
-
-app = Flask(__name__)
-CORS(app)
 
 @app.route("/api/users/login", methods=["POST"])
 def userLogin():
@@ -20,9 +20,11 @@ def userLogin():
         post.get("SCHOOL_ID_SCHOOL")
       ]
 
+      print(postData)
+
       return loginAccount(postData[0], postData[1], postData[2])
     except Exception as e:
-      return jsonify({"message": "Error1: " + str(e)}), 400
+      return jsonify({"message": "Error4: " + str(e)}), 400
   
   return jsonify({"message": "Não autorizado"})
     

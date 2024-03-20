@@ -20,17 +20,16 @@ def connectUsersTable(queryText: str, returnSomething: bool):
 
         try:
             cursor.execute(queryText)
-
-            connect.commit()
             
             if returnSomething:
                 return cursor.fetchall()
             
             return jsonify({"message": "OK"})
         except Exception as e:
-            return jsonify({"message": "Error: " + str(e)}), 400
+            return jsonify({"message": "Error2: " + str(e)}), 400
         finally:
+            connect.commit()
             cursor.close()
             connect.close()
     except Exception as e:
-        return jsonify({"message": "Error: " + str(e)}), 400
+        return jsonify({"message": "Error1: " + str(e)}), 400
