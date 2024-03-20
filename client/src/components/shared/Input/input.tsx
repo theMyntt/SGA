@@ -8,6 +8,7 @@ interface Props {
   minLength?: number;
   className?: string;
   name?: string;
+  min?: string;
 }
 
 const Input: React.FC<Props> = (props) => {
@@ -21,6 +22,7 @@ const Input: React.FC<Props> = (props) => {
         placeholder={props.placeholder}
         id={props.id}
         name={props.name}
+        min={props.min}
       />
     </div>
   );
