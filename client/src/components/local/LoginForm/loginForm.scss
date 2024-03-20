@@ -5,3 +5,14 @@
 #loginForm > div > .two-flex-boxes-form {
   width: 49%;
 }
+
+.two-flex-boxes-form {
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .two-flex-boxes-form {
+    margin-bottom: 20px !important;
+    width: 100% !important;
+  }
+}
