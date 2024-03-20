@@ -2,13 +2,11 @@ import React from "react";
 import Button from "@/components/shared/Button/button";
 import Input from "@/components/shared/Input/input";
 import AxiosPost from "@/utils/axiosPost";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
 import "./loginForm.scss";
 
 export default function LoginForm(): JSX.Element {
-  // dotenv.config();
-
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
