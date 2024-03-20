@@ -29,7 +29,6 @@ export default function LoginForm(): JSX.Element {
 
   return (
     <form autoComplete="off" id="loginForm" onSubmit={(e) => submit(e)}>
-      <h2>Que tal fazer login?</h2>
       <div className="flex between">
         <div className="two-flex-boxes-form">
           <label htmlFor="email">Email: </label>
@@ -37,7 +36,7 @@ export default function LoginForm(): JSX.Element {
         </div>
         <div className="two-flex-boxes-form">
           <label htmlFor="school_id">Código da Escola: </label>
-          <Input type="number" id="school_id" name="SCHOOL_ID_SCHOOL" />
+          <Input type="number" id="school_id" name="SCHOOL_ID_SCHOOL" min="0"/>
         </div>
       </div>
       <div>
