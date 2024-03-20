@@ -9,7 +9,7 @@ import "./loginForm.scss";
 export default function LoginForm(): JSX.Element {
   // dotenv.config();
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const email: string = (document.getElementById("email") as HTMLInputElement).value;
@@ -26,13 +26,7 @@ export default function LoginForm(): JSX.Element {
       url: `http://localhost:5000/api/users/login`
     };
 
-    AxiosPost(postData, props)
-      .then((response) => {
-        console.log("Resposta do servidor:", response);
-      })
-      .catch((error) => {
-        console.error("Erro durante a solicitação:", error);
-      });
+    console.log(await AxiosPost(postData, props));
   }
 
   return (
@@ -52,7 +46,7 @@ export default function LoginForm(): JSX.Element {
         <label htmlFor="password">Senha: </label>
         <Input type="password" id="password" name="PASSWORD_USER" />
       </div>
-      <Button children="Entrar" type="submit" />
+      <Button children="Entrar" type="submit"/>
     </form>
   );
 }
