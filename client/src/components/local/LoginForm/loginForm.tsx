@@ -7,7 +7,7 @@ import AxiosPost from "@/utils/axiosPost";
 import "./loginForm.scss";
 
 export default function LoginForm(): JSX.Element {
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
 
     const email: string = (document.getElementById("email") as HTMLInputElement).value;
@@ -24,7 +24,18 @@ export default function LoginForm(): JSX.Element {
       url: `http://localhost:5000/api/users/login`
     };
 
-    console.log(await AxiosPost(postData, props));
+    const result = await AxiosPost(postData, props);
+    console.log(result.length)
+
+    if (result.length != 0) {
+      window.localStorage.setItem("email", result[0][1]);
+      window.localStorage.setItem("password", result[0][2]);
+      window.localStorage.setItem("name", result[0][4]);
+
+      location.href = "/home"
+    } else {
+      alert("Não cadastrado");
+    }
   }
 
   return (
