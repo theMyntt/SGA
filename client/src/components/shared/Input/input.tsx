@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./input.scss";
 
 interface Props {
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const Input: React.FC<Props> = (props) => {
+  const [text, setText] = useState<string>("");
+
   return (
     <div className="custom-input-div">
       <input
@@ -22,8 +25,10 @@ const Input: React.FC<Props> = (props) => {
         placeholder={props.placeholder}
         id={props.id}
         name={props.name}
+        onChange={(e) => setText(e.target.value)}
         min={props.min}
       />
+      <p style={{fontSize: 12}}>{props.type == "password" ? text : ""}</p>
     </div>
   );
 };
