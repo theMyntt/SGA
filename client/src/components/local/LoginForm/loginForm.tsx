@@ -3,6 +3,7 @@ import Button from "@/components/shared/Button/button";
 import Input from "@/components/shared/Input/input";
 import AxiosPost from "@/utils/axiosPost";
 // import dotenv from "dotenv";
+import {dev} from "@config/environment";
 
 import "./loginForm.scss";
 
@@ -21,7 +22,7 @@ export default function LoginForm(): JSX.Element {
     };
 
     const props = {
-      url: `http://localhost:5000/api/users/login`
+      url: `http://${dev.baseUrl + dev.port + dev.routes.getUserInfoRoute}`
     };
 
     const result = await AxiosPost(postData, props);
