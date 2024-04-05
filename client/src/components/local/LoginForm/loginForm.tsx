@@ -32,6 +32,8 @@ export default function LoginForm(): JSX.Element {
       window.localStorage.setItem("email", result[0][1]);
       window.localStorage.setItem("password", result[0][2]);
       window.localStorage.setItem("name", result[0][4]);
+      window.localStorage.setItem("lastName", result[0][5]);
+      window.localStorage.setItem("school", result[0][6]);
 
       location.href = "/home"
     } else {
