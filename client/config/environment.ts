@@ -5,6 +5,7 @@ interface env {
     getUserInfoRoute: string,
     setUserInfoRoute: string,
     getMentionRoute: string
+    getSchoolInfoRoute: string,
   }
 }
 
@@ -14,6 +15,7 @@ export const dev: env = {
   routes: {
     getUserInfoRoute: "/api/users/login",
     setUserInfoRoute: "/api/users/signup",
-    getMentionRoute: "/api/users/mention"
+    getMentionRoute: "/api/users/mention",
+    getSchoolInfoRoute: "/api/users/school",
   }
 }
