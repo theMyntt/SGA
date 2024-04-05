@@ -29,6 +29,7 @@ export default function LoginForm(): JSX.Element {
     console.log(result.length)
 
     if (result.length != 0) {
+      window.localStorage.setItem("id", result[0][0]);
       window.localStorage.setItem("email", result[0][1]);
       window.localStorage.setItem("password", result[0][2]);
       window.localStorage.setItem("name", result[0][4]);
