@@ -26,6 +26,11 @@
   justify-content: space-between;
 }
 
+hr {
+  // border-color: var(--light-gray);
+  border: 1px solid var(--light-gray)
+}
+
 .card {
   border: 1px solid var(--light-gray);
   padding: 20px;
