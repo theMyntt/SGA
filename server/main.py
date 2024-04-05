@@ -7,6 +7,7 @@ CORS(app)
 from routes.getAccount import loginAccount
 from routes.setAccount import createAccount
 from routes.getMention import getMention
+from routes.getSchool import getSchool
 
 @app.route("/api/users/login", methods=["POST"])
 def userLogin():
@@ -52,6 +53,13 @@ def userCreate():
 def userMention():
   try:
     return getMention(request.args.get("USER_ID_USER"))
+  except Exception as e:
+    return jsonify({"message": "Error3: " + str(e)}), 400
+  
+@app.route("/api/users/school", methods=["GET"])
+def userSchool():
+  try:
+    return getSchool(request.args.get("ID_SCHOOL"))
   except Exception as e:
     return jsonify({"message": "Error3: " + str(e)}), 400
     
