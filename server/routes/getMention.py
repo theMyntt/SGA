@@ -1,4 +1,4 @@
-from utils import connectDb
+from utils.connectDb import connectTable
 
 def getMention(USER_ID_USER: str):
-  return connectDb.connectUsersTable(f"SELECT * FROM USER_MENTION WHERE USER_ID_USER = '{USER_ID_USER}'")
+  return connectTable(f"SELECT * FROM USER_MENTION WHERE USER_ID_USER = '{USER_ID_USER}'", True)

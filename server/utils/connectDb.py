@@ -4,7 +4,7 @@ from flask import jsonify
 import mysql.connector
 import os
 
-def connectUsersTable(queryText: str, returnSomething: bool):
+def connectTable(queryText: str, returnSomething: bool):
     load_dotenv()
 
     try:

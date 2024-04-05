@@ -1,4 +1,4 @@
-from utils.connectDb import connectUsersTable
+from utils.connectDb import connectTable
 
 def getSchool(id):
-  return connectUsersTable(f"SELECT * FROM SCHOOL_INFORMATION WHERE ID_SCHOOL = '{id}'", True)
+  return connectTable(f"SELECT * FROM SCHOOL_INFORMATION WHERE ID_SCHOOL = '{id}'", True)
