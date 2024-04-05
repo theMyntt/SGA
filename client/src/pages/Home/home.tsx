@@ -36,8 +36,8 @@ export default function Home(): JSX.Element {
         </h2>
         <p>O que quer fazer hoje?</p>
         <br />
-        <hr />
-        <br />
+        
+        
         <div className="student-info card">
           <h2>Indentificação do aluno.</h2>
           <div>
