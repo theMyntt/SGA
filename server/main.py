@@ -59,7 +59,7 @@ def userMention():
 @app.route("/api/users/school", methods=["GET"])
 def userSchool():
   try:
-    return getSchool(request.args.get("ID_SCHOOL"))
+    return getSchool(request.args.get("id"))
   except Exception as e:
     return jsonify({"message": "Error3: " + str(e)}), 400
     
