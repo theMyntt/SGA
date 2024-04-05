@@ -21,11 +21,7 @@ export default function LoginForm(): JSX.Element {
       SCHOOL_ID_SCHOOL: schoolId
     };
 
-    const props = {
-      url: `http://${dev.baseUrl + dev.port + dev.routes.getUserInfoRoute}`
-    };
-
-    const result = await AxiosPost(postData, props);
+    const result = await AxiosPost(postData, `http://${dev.baseUrl + dev.port + dev.routes.getUserInfoRoute}`);
     console.log(result.length)
 
     if (result.length != 0) {

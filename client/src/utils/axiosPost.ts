@@ -8,12 +8,9 @@ interface Data {
   SCHOOL_ID_SCHOOL: number;
 }
 
-interface Props {
-  url: string;
-}
 
-export default async function AxiosPost(data: Data, props: Props): Promise<any> {
-  return await axios.post(props.url, data)
+export default async function AxiosPost(data: Data, url: string): Promise<any> {
+  return await axios.post(url, data)
     .then((response: AxiosResponse) => response.data)
     .catch((error) => { throw error; });
 }
