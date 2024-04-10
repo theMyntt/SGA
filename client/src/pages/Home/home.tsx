@@ -44,14 +44,14 @@ export default function Home(): JSX.Element {
           <h2>Indentificação do aluno.</h2>
           <div>
             <p>Id do Aluno:</p>
-            <p className="card">{localStorage.getItem("id") ?? ""}</p>
+            <p className="card">{localStorage.getItem("id") ?? ""}</p> <br/>
             <p>Nome:</p>
-            <p className="card">
+            <p className="card"> 
               {CapitalizeName(
                 localStorage.getItem("name") ?? "",
                 localStorage.getItem("lastName") ?? ""
               )}
-            </p>
+            </p> <br/>
             <p>Escola:</p>
             <p className="card">{schoolInfo.length > 1 ? schoolInfo[1] : ""}</p>
           </div>
