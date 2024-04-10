@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   return (
-    <div>
+    <div className={`${window.localStorage.getItem("theme")}`}>
       <Header />
       <div className="app-screen">
         <h2>
