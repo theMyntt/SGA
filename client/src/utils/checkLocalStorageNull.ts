@@ -1,5 +1,5 @@
 export default function CheckLocalStorage(): void {
-  if (window.localStorage.length == 0) {
+  if (window.localStorage.length == 1) {
     location.href = "/";
   }
 }
