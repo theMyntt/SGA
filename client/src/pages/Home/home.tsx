@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
         <div className="student-info card">
           <h2>Indentificação do aluno.</h2>
           <div>
-            <p>Id do Aluno:</p>
+            <p>Identificador do Aluno:</p>
             <p className="card">{localStorage.getItem("id") ?? ""}</p> <br/>
             <p>Nome:</p>
             <p className="card"> 
