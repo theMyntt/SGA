@@ -5,5 +5,3 @@ def randomChoice() -> str:
 
 def createId() -> str:
   return f"{randomChoice()}-{randomChoice()}-{randomChoice()}-{randomChoice()}"
-
-print(createId())
