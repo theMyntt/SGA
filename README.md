@@ -4,7 +4,7 @@ Sistema de Gerenciamento de Alunos desenvolvido com Python, ReactTS, ViteJS, Axi
 
 ## Requisitos
 
-- Python >= 3.12.x
+- Java >= 17.x
 - NodeJS >= 21.5.x
 - MySQL instalado
 
@@ -12,13 +12,9 @@ Sistema de Gerenciamento de Alunos desenvolvido com Python, ReactTS, ViteJS, Axi
 - Clone este repositório
 
 ### Back-End
-- Entre na pasta server
-- Instale a dependência flask ```pip3 install flask```
-- Instale a dependência flask-cors ```pip3 install -U flask-cors```
-- Instale a dependência my-sql ```pip3 install mysql-connector-python```
-- Instale a dependência python-dotenv ```pip3 install python-dotenv```
-- Instale a dependência hashlib ```pip3 install hashlib```
-- Inicie o servidor com o comando ```python3 main.py```
+- Entre na pasta ```server``` com o IntelliJ
+- Instale as dependências do [pom.xml](./server/pom.xml)
+- Inicie o servidor
 
 ### Front-End
 - Entre na pasta client
