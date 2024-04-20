@@ -9,8 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Modifying
 public interface UserRepository extends JpaRepository<UserEntity, String> {
+    @Modifying
     @Transactional
     @Query("INSERT INTO u " +
             "FROM UserEntity(id,email,password,cpf,stateCpf,rg,firstName,lastName,schoolId) " +
