@@ -1,4 +1,4 @@
-package com.themyntt.SGA;
+package com.themyntt.sga;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
