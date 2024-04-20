@@ -24,8 +24,8 @@ public class UserEntity {
     @Column(name = "CPF_USER")
     public String cpf;
 
-    @Column(name = "STATE_CPF_USER")
-    public String stateCpf;
+    @Column(name = "STATE_RG_USER")
+    public String stateRg;
 
     @Column(name = "RG_USER")
     public String rg;
@@ -47,7 +47,7 @@ public class UserEntity {
             String password,
             String cellphone,
             String cpf,
-            String stateCpf,
+            String stateRg,
             String rg,
             String firstName,
             String lastName,
@@ -58,7 +58,7 @@ public class UserEntity {
         this.password = password;
         this.cellphone = cellphone;
         this.cpf = cpf;
-        this.stateCpf = stateCpf;
+        this.stateRg = stateRg;
         this.rg = rg;
         this.firstName = firstName;
         this.lastName = lastName;

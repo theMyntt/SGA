@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
             @Param("password") String password,
             @Param("cellphone") String cellphone,
             @Param("cpf") String cpf,
-            @Param("stateCpf") String stateCpf,
+            @Param("stateRg") String stateRg,
             @Param("rg") String rg,
             @Param("firstName") String firstName,
             @Param("lastName") String lastName,
