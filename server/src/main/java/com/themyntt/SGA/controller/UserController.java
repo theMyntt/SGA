@@ -78,7 +78,7 @@ public class UserController {
   }
 
   @PostMapping("/get/")
-  public UserEntity getUser(@RequestBody() UserEntity userInfo) {
+  public long getUser(@RequestBody() UserEntity userInfo) {
     String email = userInfo.email;
     String password = userInfo.password;
 
