@@ -40,4 +40,28 @@ public class UserEntity {
     public String schoolId;
 
     public UserEntity() { }
+
+    public UserEntity(
+            String id,
+            String email,
+            String password,
+            String cellphone,
+            String cpf,
+            String stateCpf,
+            String rg,
+            String firstName,
+            String lastName,
+            String schoolId
+    ) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.cellphone = cellphone;
+        this.cpf = cpf;
+        this.stateCpf = stateCpf;
+        this.rg = rg;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.schoolId = schoolId;
+    }
 }
