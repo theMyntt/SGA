@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
 
   @Modifying
   @Transactional
-  @Query("INSERT INTO UserEntity(id, email, password, cellphone, cpf, stateRg, rg, firstName, lastName, schoolId) VALUES (:id, :email, :password, :cellphone, :cpf, :stateRg, :rg, :firstName, :lastName, :schoolId)")
+  @Query("INSERT INTO UserEntity(id, email, password, cellphone, cpf, stateRg, rg, firstName, lastName, token, schoolId) VALUES (:id, :email, :password, :cellphone, :cpf, :stateRg, :rg, :firstName, :lastName, :token, :schoolId)")
   void setUser(
       @Param("id") String id,
       @Param("email") String email,
@@ -24,6 +24,7 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
       @Param("rg") String rg,
       @Param("firstName") String firstName,
       @Param("lastName") String lastName,
+      @Param("token") long token,
       @Param("schoolId") String schoolId
   );
 }

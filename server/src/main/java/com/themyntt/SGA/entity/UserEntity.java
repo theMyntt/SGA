@@ -36,6 +36,9 @@ public class UserEntity {
   @Column(name = "LAST_NAME_USER")
   public String lastName;
 
+  @Column(name = "USER_TOKEN")
+  public long token;
+
   @Column(name = "SCHOOL_ID_SCHOOL")
   public String schoolId;
 
