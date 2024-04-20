@@ -88,7 +88,7 @@ public class UserController {
   @PostMapping("/set/")
   public String setUser(@RequestBody() UserEntity userInfo) {
     String id = createId();
-    String email = userInfo.email;
+    String email = userInfo.email.toLowerCase();
     String password = userInfo.password;
     String cellphone = formatCellphone(userInfo.cellphone);
     String cpf = checkCPF(userInfo.cpf);
