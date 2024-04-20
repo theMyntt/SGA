@@ -1,79 +1,107 @@
-package com.themyntt.SGA.controller;
+package com.themyntt.sga.controller;
 
-import com.themyntt.SGA.entity.UserEntity;
-import com.themyntt.SGA.repository.UserRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.themyntt.sga.entity.UserEntity;
+import com.themyntt.sga.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/user/")
 public class UserController {
-    private UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    public String createId() {
-        String id = UUID.randomUUID().toString();
-        String formatId = id.replaceAll("-", "").substring(0, 15);
-        return formatId + "-" + formatId + "-" + formatId;
+  @Autowired
+  public UserController(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
+
+  public String createId() {
+    String id = UUID.randomUUID().toString();
+    String formatId = id.replaceAll("-", "").substring(0, 15);
+    return formatId + "-" + formatId + "-" + formatId;
+  }
+
+  public static String checkCPF(String cpf) {
+    cpf = cpf.replaceAll("[^0-9]", "");
+
+    if (cpf.length() != 11) {
+      return null;
     }
 
-    public static boolean checkCPF(String cpf) {
-        cpf = cpf.replaceAll("[^0-9]", "");
-
-        if (cpf.length() != 11) {
-            return false;
-        }
-
-        int sum = 0;
-        for (int i = 0; i < 9; i++) {
-            sum += (cpf.charAt(i) - '0') * (10 - i);
-        }
-        int digit1 = 11 - (sum % 11);
-        if (digit1 > 9) {
-            digit1 = 0;
-        }
-
-        sum = 0;
-        for (int i = 0; i < 10; i++) {
-            sum += (cpf.charAt(i) - '0') * (11 - i);
-        }
-        int digit2 = 11 - (sum % 11);
-        if (digit2 > 9) {
-            digit2 = 0;
-        }
-
-        boolean result = (cpf.charAt(9) - '0') == digit1 && (cpf.charAt(10) - '0') == digit2;
-        if (result) {
-            return true;
-        }
-        return false;
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+      sum += (cpf.charAt(i) - '0') * (10 - i);
+    }
+    int digit1 = 11 - (sum % 11);
+    if (digit1 > 9) {
+      digit1 = 0;
     }
 
-    @PostMapping("/set/")
-    public String setUser(@RequestBody() UserEntity userInfo) {
-        try {
-            boolean check = checkCPF(userInfo.cpf);
-            if (!check) {
-                return "CPF Invalido";
-            }
-
-            this.userRepository.setUser(
-                    createId(), // gerar userInfo.id
-                    userInfo.email,
-                    userInfo.password,
-                    userInfo.cellphone,
-                    userInfo.cpf,
-                    userInfo.stateRg,
-                    userInfo.rg,
-                    userInfo.firstName,
-                    userInfo.lastName,
-                    userInfo.schoolId
-            );
-            return "Usuário cadastrado com sucesso";
-        } catch (Exception e) {
-            return "Erro ao cadastrar o usuário";
-        }
+    sum = 0;
+    for (int i = 0; i < 10; i++) {
+      sum += (cpf.charAt(i) - '0') * (11 - i);
     }
+    int digit2 = 11 - (sum % 11);
+    if (digit2 > 9) {
+      digit2 = 0;
+    }
+
+    boolean isValid = (cpf.charAt(9) - '0') == digit1 && (cpf.charAt(10) - '0') == digit2;
+    if (isValid) {
+      return cpf;
+    } else {
+      return null;
+    }
+  }
+
+  public static String checkRg(String rg) {
+    String rgFormated = rg.replaceAll("[^0-9]", "");
+
+    if (rgFormated.length() == 9) {
+      return rgFormated;
+    } else {
+      return null;
+    }
+  }
+
+
+  @PostMapping("/set/")
+  public String setUser(@RequestBody() UserEntity userInfo) {
+    String id = createId();
+    String email = userInfo.email;
+    String password = userInfo.password;
+    String cellphone = userInfo.cellphone;
+    String cpf = checkCPF(userInfo.cpf);
+    String stateRg = userInfo.stateRg;
+    String rg = checkRg(userInfo.rg);
+    String firstName = userInfo.firstName;
+    String lastName = userInfo.lastName;
+    String schoolId = userInfo.schoolId;
+
+    try {
+      if (cpf == null) {
+        return "CPF Invalido";
+      }
+
+      System.out.println(cpf);
+
+      this.userRepository.setUser(
+          id,
+          email,
+          password,
+          cellphone,
+          cpf,
+          stateRg,
+          rg,
+          firstName,
+          lastName,
+          schoolId
+      );
+      return "Usuário cadastrado com sucesso.";
+    } catch (Exception e) {
+      return "Erro ao cadastrar o usuário: " + e;
+    }
+  }
 }
