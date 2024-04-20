@@ -73,7 +73,8 @@ public class UserController {
   }
 
   public static String formatCellphone(String cellphone) {
-    return cellphone.replaceAll("[^0-9\\s]", "");
+    String formatedPhone = cellphone.replaceAll("[^0-9]", "").replaceAll("\\s+", "");
+    return formatedPhone;
   }
 
   @PostMapping("/set/")
@@ -81,7 +82,7 @@ public class UserController {
     String id = createId();
     String email = userInfo.email;
     String password = userInfo.password;
-    String cellphone = userInfo.cellphone;
+    String cellphone = formatCellphone(userInfo.cellphone);
     String cpf = checkCPF(userInfo.cpf);
     String stateRg = userInfo.stateRg;
     String rg = checkRg(userInfo.rg);
