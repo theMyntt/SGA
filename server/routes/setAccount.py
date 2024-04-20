@@ -1,9 +1,0 @@
-from utils.connectDb import connectTable
-from utils.encrypt import hashText
-from utils.createId import createStringId
-
-def createAccount(EMAIL_USER, PASSWORD_USER, CELLPHONE_USER, NAME_USER, SCHOOL_ID_SCHOOL):
-    HASH_PASSWORD = hashText(PASSWORD_USER)
-    SCHOOL_ID_SCHOOL = connectTable(f"SELECT SCHOOL_ID_SCHOOL FROM SCHOOL_INFORMATION WHERE SCHOOL_CODE = {SCHOOL_ID_SCHOOL}")
-
-    return connectTable(f"INSERT INTO USER_INFORMATION (ID_USER, EMAIL_USER, PASSWORD_USER, CELLPHONE_USER, NAME_USER, SCHOOL_ID_SCHOOL) VALUES ('{createStringId()}, {EMAIL_USER}', '{HASH_PASSWORD}', '{CELLPHONE_USER}', '{NAME_USER}', {SCHOOL_ID_SCHOOL})", False)
