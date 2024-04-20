@@ -65,7 +65,7 @@ public class UserController {
                     userInfo.password,
                     userInfo.cellphone,
                     userInfo.cpf,
-                    userInfo.stateCpf,
+                    userInfo.stateRg,
                     userInfo.rg,
                     userInfo.firstName,
                     userInfo.lastName,
