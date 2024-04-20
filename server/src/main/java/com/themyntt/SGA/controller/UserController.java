@@ -77,6 +77,14 @@ public class UserController {
     return formatedPhone;
   }
 
+  @PostMapping("/get/")
+  public UserEntity getUser(@RequestBody() UserEntity userInfo) {
+    String email = userInfo.email;
+    String password = userInfo.password;
+
+    return this.userRepository.getUser(email, password);
+  }
+
   @PostMapping("/set/")
   public String setUser(@RequestBody() UserEntity userInfo) {
     String id = createId();
