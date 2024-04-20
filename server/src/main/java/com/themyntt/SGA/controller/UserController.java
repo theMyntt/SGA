@@ -5,6 +5,7 @@ import com.themyntt.sga.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
@@ -66,6 +67,14 @@ public class UserController {
     }
   }
 
+  public static long createToken() {
+    Random rand = new Random();
+    return rand.nextInt(1700000 - 1000000 + 1) + 1000000;
+  }
+
+  public static String formatCellphone(String cellphone) {
+    return cellphone.replaceAll("[^0-9\\s]", "");
+  }
 
   @PostMapping("/set/")
   public String setUser(@RequestBody() UserEntity userInfo) {
@@ -78,14 +87,13 @@ public class UserController {
     String rg = checkRg(userInfo.rg);
     String firstName = userInfo.firstName;
     String lastName = userInfo.lastName;
+    long token = createToken();
     String schoolId = userInfo.schoolId;
 
     try {
       if (cpf == null) {
         return "CPF Invalido";
       }
-
-      System.out.println(cpf);
 
       this.userRepository.setUser(
           id,
@@ -97,6 +105,7 @@ public class UserController {
           rg,
           firstName,
           lastName,
+          token,
           schoolId
       );
       return "Usuário cadastrado com sucesso.";
