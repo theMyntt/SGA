@@ -98,7 +98,7 @@ public class UserController {
 
   @PostMapping("/get/")
   public long getUser(@RequestBody() UserEntity userInfo) {
-    String email = userInfo.email;
+    String email = userInfo.email.toLowerCase();
     String password = hashPassword(userInfo.password);
 
     return this.userRepository.getUser(email, password);
