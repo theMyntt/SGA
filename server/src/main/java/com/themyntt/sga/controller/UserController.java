@@ -5,6 +5,8 @@ import com.themyntt.sga.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Random;
 import java.util.UUID;
 
@@ -16,6 +18,23 @@ public class UserController {
   @Autowired
   public UserController(UserRepository userRepository) {
     this.userRepository = userRepository;
+  }
+
+  public String hashPassword(String password) {
+    try {
+      MessageDigest digest = MessageDigest.getInstance("SHA-256");
+      byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+      StringBuilder hexString = new StringBuilder();
+      for (byte b : hash) {
+        String hex = Integer.toHexString(0xff & b);
+        if (hex.length() == 1) hexString.append('0');
+        hexString.append(hex);
+      }
+      return hexString.toString();
+    } catch (Exception ex) {
+      ex.printStackTrace();
+      return null;
+    }
   }
 
   public String createId() {
@@ -80,7 +99,7 @@ public class UserController {
   @PostMapping("/get/")
   public long getUser(@RequestBody() UserEntity userInfo) {
     String email = userInfo.email;
-    String password = userInfo.password;
+    String password = hashPassword(userInfo.password);
 
     return this.userRepository.getUser(email, password);
   }
@@ -89,7 +108,7 @@ public class UserController {
   public String setUser(@RequestBody() UserEntity userInfo) {
     String id = createId();
     String email = userInfo.email.toLowerCase();
-    String password = userInfo.password;
+    String password = hashPassword(userInfo.password);
     String cellphone = formatCellphone(userInfo.cellphone);
     String cpf = checkCPF(userInfo.cpf);
     String stateRg = userInfo.stateRg;
